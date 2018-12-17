@@ -102,18 +102,58 @@ class InferenceEngineWrapper:
         计算两个长文本的主题分布之间的距离，包括jensen_shannon_divergence和hellinger_distance
 
         Args:
-            doc1: 输入文档1，无需分词
-            doc2: 输入文档2，无需分词
+            doc1: 输入文档1分词后的list结果
+            doc2: 输入文档2分词后的list结果
 
         Returns:
             返回一个list对象，其中有两个float元素，第一个表示jensen_shannon_divergence距离，
             第二个表示hellinger_distance距离。例如：
             [0.187232, 0.23431]
         """
+        doc1 = ' '.join(doc1)
+        doc2 = ' '.join(doc2)
         return familia.cal_doc_distance(self._inference_engine,
-                                                 self._tokenizer,
                                                  doc1,
                                                  doc2)
+
+
+    def cal_keywords_similarity(self, words, doc):
+        """关键词计算
+
+        使用LDA模型计算候选关键词与文档的相关性
+
+        Args:
+            words: 候选词，用空格隔开
+            doc: 分词后的文档内容
+
+        Returns:
+            返回一个list对象，每个元素为关键词以及其与文档相关性。
+        """
+        return familia.cal_keywords_similarity(self._inference_engine,
+                                                words,
+                                                doc)
+
+    def cal_keywords_twe_similarity(self, words, doc):
+        """关键词计算
+
+        使用TWE模型计算候选关键词与文档的相关性
+
+        Args:
+            words: 候选词，用空格隔开
+            doc: 分词后的文档内容
+
+        Returns:
+            返回一个list对象，每个元素为关键词以及其与文档相关性。
+        """
+        # 如果没有加载TWE模型无法进行计算
+        if self._emb_file is None:
+            sys.stderr.write("Need to load Topical Word Embeddings file.\n")
+            return
+        return familia.cal_keywords_twe_similarity(self._inference_engine,
+                                                   self._twe,
+                                                   words,
+                                                   doc)
+
 
     def cal_query_doc_similarity(self, query, doc):
         """计算短文本与长文本之间的相关性
@@ -121,8 +161,8 @@ class InferenceEngineWrapper:
         使用LDA模型和TWE模型分别衡量短文本跟长文本之间的相关性
 
         Args:
-            query: 输入短文本，无需分词
-            doc: 输入长文本，无需分词
+            query: 输入短文本分词后的list结果
+            doc: 输入长文本分词后的list结果
 
         Returns:
             返回一个list对象，其中有两个float元素，第一个表示根据LDA模型得到的相关性，
@@ -133,8 +173,9 @@ class InferenceEngineWrapper:
         if self._emb_file is None:
             sys.stderr.write("Need to load Topical Word Embeddings file.\n")
             return
+        query = ' '.join(query)
+        doc = ' '.join(doc)
         return familia.cal_query_doc_similarity(self._inference_engine,
-                                                         self._tokenizer,
                                                          self._twe,
                                                          query,
                                                          doc)

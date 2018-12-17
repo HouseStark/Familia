@@ -5,7 +5,7 @@
 [![Build Status][image-1]][1]
 [![License][image-2]]()
 
-**Familia** 开源项目包含文档主题推断工具、语义匹配计算工具以及基于工业级语料训练的三种主题模型：Latent Dirichlet Allocation(LDA)、SentenceLDA 和Topical Word Embedding(TWE)。 支持用户以“拿来即用”的方式进行文本分类、文本聚类、个性化推荐等多种场景的调研和应用。考虑到主题模型训练成本较高以及开源主题模型资源有限的现状，我们会陆续开放基于工业级语料训练的多个垂直领域的主题模型，以及这些模型在工业界的典型应用方式，助力主题模型技术的科研和落地。
+**Familia** 开源项目包含文档主题推断工具、语义匹配计算工具以及基于工业级语料训练的三种主题模型：Latent Dirichlet Allocation(LDA)、SentenceLDA 和Topical Word Embedding(TWE)。 支持用户以“拿来即用”的方式进行文本分类、文本聚类、个性化推荐等多种场景的调研和应用。考虑到主题模型训练成本较高以及开源主题模型资源有限的现状，我们会陆续开放基于工业级语料训练的多个垂直领域的主题模型，以及这些模型在工业界的典型应用方式，助力主题模型技术的科研和落地。([**English**][10])
 
 ## 应用介绍
 **Familia**目前包含的主题模型的对应论文介绍可以参考[相关论文][3]。
@@ -69,13 +69,13 @@
 
 The following article describes the Familia project and industrial cases powered by topic modeling. It bundles and translates the Chinese documentation of the website. We recommend citing this article as default.
 
-Di Jiang, Zeyu Chen, Rongzhong Lian, Siqi Bao and Chen Li. 2017. [Familia: An Open-Source Toolkit for Industrial Topic Modeling][8]. arXiv preprint arXiv:1707.09823.
-
-	@article{jiang2017familia,
-	  author = {Di Jiang and Zeyu Chen and Rongzhong Lian and Siqi Bao and Chen Li},
-	  title = {{Familia: An Open-Source Toolkit for Industrial Topic Modeling}},
-	  journal = {arXiv preprint arXiv:1707.09823},
-	  year = {2017}
+Di Jiang, Yuanfeng Song, Rongzhong Lian, Siqi Bao, Jinhua Peng, Huang He, Hua Wu. 2018. [Familia: A Configurable Topic Modeling Framework for Industrial Text Engineering][8]. arXiv preprint arXiv:1808.03733.
+	
+	@article{jiang2018familia,
+	  author = {Di Jiang and Yuanfeng Song and Rongzhong Lian and Siqi Bao and Jinhua Peng and Huang He and Hua Wu},
+	  title = {{Familia: A Configurable Topic Modeling Framework for Industrial Text Engineering}},
+	  journal = {arXiv preprint arXiv:1808.03733},
+	  year = {2018}
 	}
 
 ## Copyright and License
@@ -88,8 +88,9 @@ Familia is provided under the [BSD-3-Clause License][9].
 [5]:	https://github.com/baidu/Familia/blob/master/model/README.md
 [6]:	https://github.com/baidu/Familia/wiki/Demo%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3
 [7]:	https://github.com/baidu/Familia/issues
-[8]:	https://arxiv.org/pdf/1707.09823.pdf
+[8]:	https://arxiv.org/abs/1808.03733v2
 [9]:	LICENSE
+[10]:   https://github.com/baidu/Familia/blob/master/README.EN.md
 
 [image-1]:	https://travis-ci.org/baidu/Familia.svg?branch=master
 [image-2]:	https://img.shields.io/pypi/l/Django.svg
